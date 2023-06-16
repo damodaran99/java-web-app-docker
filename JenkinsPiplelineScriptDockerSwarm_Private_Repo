@@ -6,11 +6,11 @@ node{
         git url: 'https://github.com/damodaran99/java-web-app-docker.git',branch: 'master'
     }
     
-    stage(" Maven Clean Package"){
+    stage(" Maven Clean Package")'{'
       def mavenHome =  tool name: "maven-3.9.2", type: "maven"
       def mavenCMD = "${mavenHome}/bin/mvn"
       sh "${mavenCMD} clean package"
-    }
+    '}'
     
     stage("Build Dokcer Image") {
          sh "docker build -t 172.31.1.204:8083/java-web-app:${buildNumber} ."
